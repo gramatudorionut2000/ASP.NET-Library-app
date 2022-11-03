@@ -4,6 +4,7 @@ using Grama_Tudor_Ionut_Lab2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Grama_Tudor_Ionut_Lab2.Migrations
 {
     [DbContext(typeof(Grama_Tudor_Ionut_Lab2Context))]
-    partial class Grama_Tudor_Ionut_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20221103174234_BookCategoryFix")]
+    partial class BookCategoryFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,7 +39,7 @@ namespace Grama_Tudor_Ionut_Lab2.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(6,2)");
 
-                    b.Property<int?>("PublisherID")
+                    b.Property<int>("PublisherID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("PublishingDate")
@@ -115,7 +117,9 @@ namespace Grama_Tudor_Ionut_Lab2.Migrations
                 {
                     b.HasOne("Grama_Tudor_Ionut_Lab2.Models.Publisher", "Publisher")
                         .WithMany("Books")
-                        .HasForeignKey("PublisherID");
+                        .HasForeignKey("PublisherID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Publisher");
                 });
