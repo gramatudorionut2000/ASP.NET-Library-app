@@ -10,10 +10,17 @@ namespace Grama_Tudor_Ionut_Lab2.Models
     {
         public int ID { get; set; }
 
+
+        [Required, StringLength(150, MinimumLength = 3)]
+
         [Display(Name = "Book Title")]
         public string Title { get; set; }
-        public string Author { get; set; }
 
+        public int? AuthorID { get; set; }
+        public Author? Author { get; set; }
+
+
+        [Range(1, 300)]
         [Column(TypeName = "decimal(6, 2)")]
         public decimal Price { get; set; }
         
