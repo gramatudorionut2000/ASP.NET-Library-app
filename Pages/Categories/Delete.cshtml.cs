@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Grama_Tudor_Ionut_Lab2.Data;
 using Grama_Tudor_Ionut_Lab2.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace Grama_Tudor_Ionut_Lab2.Pages.Categories
 {
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly Grama_Tudor_Ionut_Lab2.Data.Grama_Tudor_Ionut_Lab2Context _context;

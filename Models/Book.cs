@@ -19,11 +19,10 @@ namespace Grama_Tudor_Ionut_Lab2.Models
         public int? AuthorID { get; set; }
         public Author? Author { get; set; }
 
-
-        [Range(1, 300)]
         [Column(TypeName = "decimal(6, 2)")]
+        [Range(0.01, 500)]
         public decimal Price { get; set; }
-        
+
         [DataType(DataType.Date)]
         public DateTime PublishingDate { get; set; }
         public int? PublisherID { get; set; }

@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Grama_Tudor_Ionut_Lab2.Data;
 using Grama_Tudor_Ionut_Lab2.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace Grama_Tudor_Ionut_Lab2.Pages.Publishers
 {
+    [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
         private readonly Grama_Tudor_Ionut_Lab2.Data.Grama_Tudor_Ionut_Lab2Context _context;
